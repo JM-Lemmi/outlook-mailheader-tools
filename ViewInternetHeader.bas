@@ -80,3 +80,30 @@ Dim matches
         GetStringFromPattern = matches(0).SubMatches(0)
     End If
 End Function
+
+Sub ViewMessagePath()
+    Dim olItem As Outlook.MailItem, olMsg As Outlook.MailItem
+    Dim strheader As String
+
+    For Each olItem In Application.ActiveExplorer.Selection
+        strheader = GetInetHeaders(olItem)
+    
+    lineheader = RegExpReplace(strheader, "\r\n\t", " ")
+    
+    Dim Table() As Variant
+    Dim Sender() As Variant
+    Dim Receiver() As Variant
+    Dim Software()
+    Dim Envelope() As Variant
+    Dim Time() As Variant
+    
+    ' loop over lines of lineheader and extract all lines starting with "Received:" into an Array
+    ' loop over that array to extract the information with Regex and put into respective arrays.
+    ' from: 'from(.*)by' , by, with, for, ; timedate
+    
+    ' asseble Table
+    ' display table
+    
+    Next
+    Set olMsg = Nothing
+End Sub
